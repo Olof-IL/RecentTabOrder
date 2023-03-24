@@ -31,12 +31,12 @@
     <applicationListeners>
         <listener class="com.example.recenttaborder.MyProjectManagerListener"
                   topic="com.intellij.openapi.project.ProjectManagerListener"/>
-        <listener class="com.example.recenttaborder.MostRecentReorderingTabListener"
-                  topic="com.intellij.ui.tabs.TabsListener"/>
+<!--        <listener class="com.example.recenttaborder.MostRecentReorderingTabListener"
+                  topic="com.intellij.ui.tabs.TabsListener"/> -->
 
     </applicationListeners>
-    <projectListeners>
+<!--    <projectListeners>
         <listener class="com.example.recenttaborder.MyToolWindowManagerListener"
                   topic="com.intellij.openapi.wm.ex.ToolWindowManagerListener"/>
-    </projectListeners>
+    </projectListeners> -->
 </idea-plugin>

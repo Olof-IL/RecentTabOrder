@@ -31,6 +31,8 @@ class MyProjectService(project: Project) {
 
     private var registeredWindows = setOf<EditorWindow>()
 
+    private var processing = false;
+
     fun registerTabListener(project: Project) {
         val fex = FileEditorManagerEx.getInstance(project) as FileEditorManagerEx
 
@@ -38,20 +40,24 @@ class MyProjectService(project: Project) {
         for (v in fex.windows) {
             v.tabbedPane.tabs.addListener(object : TabsListener {
                 override fun selectionChanged(oldSelection: TabInfo?, newSelection: TabInfo?) {
-                    super.selectionChanged(oldSelection, newSelection)
-//                    println("Tab selection changed! from $oldSelection to $newSelection")
-                    if(oldSelection != null) {
-                        val newTabs = mutableListOf<TabInfo?>();
-                        newTabs.add(newSelection);
-                        for(tab in v.tabbedPane.tabs.tabs) {
-                            if(tab != newSelection) {
-                                newTabs.add(tab);
+                    if(!processing) { // Handle unwanted recursion when removing and adding tabs.
+                        processing = true
+                        super.selectionChanged(oldSelection, newSelection)
+                        println("Tab selection changed! from $oldSelection to $newSelection")
+                        if (oldSelection != null) {
+                            val newTabs = mutableListOf<TabInfo?>();
+                            newTabs.add(newSelection);
+                            for (tab in v.tabbedPane.tabs.tabs) {
+                                if (tab != newSelection) {
+                                    newTabs.add(tab);
+                                }
+                            }
+                            v.tabbedPane.tabs.removeAllTabs()
+                            for (tab in newTabs) {
+                                v.tabbedPane.tabs.addTab(tab);
                             }
                         }
-                        v.tabbedPane.tabs.removeAllTabs()
-                        for(tab in newTabs) {
-                            v.tabbedPane.tabs.addTab(tab);
-                        }
+                        processing = false
                     }
                 }
             })
