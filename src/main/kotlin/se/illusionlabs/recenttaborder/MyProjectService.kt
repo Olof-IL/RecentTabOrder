@@ -1,4 +1,4 @@
-package com.example.recenttaborder
+package se.illusionlabs.recenttaborder
 
 import com.intellij.openapi.editor.EditorFactory
 import com.intellij.openapi.editor.event.EditorFactoryEvent
@@ -90,65 +90,5 @@ class MyProjectService(project: Project) {
                 println("Editor released ${event.editor}");
             }
         }, project);
-
-
-        // Below is a lot of approaches tried that seems they don't work...
-        // Either straight up does not work, or is using deprecated calls.
-
-//        ToolWindowManagerListener mm
-
-        // Get the tool window manager for the project
-//        val toolWindowManager = ToolWindowManager.getInstance(project) as ToolWindowManagerImpl
-
-//        toolWindowManager.toolWindowsPane
-//
-//        toolWindowManager.addToolWindowManagerListener()
-
-        // Get the tool window containing the tabbed content component
-//        val toolWindow = toolWindowManager.getToolWindow("EditorTabs")
-
-
-        // Get the tabbed content component from the tool window
-//        val tabbedContentUI = toolWindow?.contentManager?.
-
-        // Listen for tab change events
-//        tabbedContentUI.addListener(object : TabbedContentUIListener {
-//            override fun selectionChanged(tab: com.intellij.openapi.wm.ToolWindowTab) {
-//                println("Active tab: ${tab.text}")
-//            }
-//        })
-        // Get the tabbed content component from the tool window
-//        val tabbedContent = toolWindow?.contentManager?.selectedContent as TabbedContentImpl
-
-
-        // Get all the contents (tabs) in the tabbed content component
-  //      val contents = tabbedContent?.tabs;
-
-        /*
-
-        // Get the component manager for the project
-        val componentManager = project.getComponent(ComponentManagerImpl::class.java)
-
-        // Get the tabbed content component for the project
-        val tabbedContent = componentManager.ideFrame.contentManager.selectedContent as TabbedContentImpl
-*/
-        /*
-
-//        System.getenv("CI")
-            ?: TODO("Don't forget to remove all non-needed sample code files with their corresponding registration entries in `plugin.xml`.")
-        val componentManager = project.getComponent(ComponentManagerImpl::class.java) as ComponentManagerImpl
-
-        // Get the tabbed content component for the project
-
-        // Get the tabbed content component for the project
-        val tabbedContent = componentManager.ideFrame.contentManagher.sel
-        val contentManager = componentManager.getService<ContentManager>()
-*/
-
     }
-
-    /**
-     * Chosen by fair dice roll, guaranteed to be random.
-     */
-    fun getRandomNumber() = 4
 }

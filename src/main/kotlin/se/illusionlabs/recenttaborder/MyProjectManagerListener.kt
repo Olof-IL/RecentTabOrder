@@ -1,4 +1,4 @@
-package com.example.recenttaborder
+package se.illusionlabs.recenttaborder
 
 import com.intellij.openapi.components.service
 import com.intellij.openapi.project.Project

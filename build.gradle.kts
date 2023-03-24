@@ -4,8 +4,8 @@ plugins {
     id("org.jetbrains.intellij") version "1.10.1"
 }
 
-group = "com.example"
-version = "1.0-SNAPSHOT"
+group = "se.illusionlabs"
+version = "1.0"
 
 repositories {
     mavenCentral()
