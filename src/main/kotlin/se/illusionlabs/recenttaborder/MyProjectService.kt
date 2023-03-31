@@ -11,11 +11,8 @@ import com.intellij.ui.tabs.TabsListener
 
 class MyProjectService(project: Project) {
 
-    private var didIt = false
 
-    private var printDEBUG = false
-
-    private var processing = false;
+    private var printDEBUG = true
 
     fun registerTabListener(project: Project) {
         val fex = FileEditorManagerEx.getInstance(project) as FileEditorManagerEx
@@ -23,6 +20,7 @@ class MyProjectService(project: Project) {
 
         for (v in fex.windows) {
             v.tabbedPane.tabs.addListener(object : TabsListener {
+                private var processing = false;
                 override fun selectionChanged(oldSelection: TabInfo?, newSelection: TabInfo?) {
                     if(!processing) { // Handle unwanted recursion when removing and adding tabs.
                         processing = true
@@ -52,6 +50,7 @@ class MyProjectService(project: Project) {
         if(printDEBUG) println("MyProjectService Startup " + project.name)
 
         EditorFactory.getInstance().addEditorFactoryListener(object : EditorFactoryListener {
+            private var didIt = false
 
             override fun editorCreated(event: EditorFactoryEvent) {
                 // Get the tool window manager for the project
