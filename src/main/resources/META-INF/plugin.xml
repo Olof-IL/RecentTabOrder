@@ -17,6 +17,12 @@
     Simple plugin doing one thing:<br> Keeps tabs ordered by recently used!<br>
   ]]></description>
 
+    <change-notes>
+        Remove until-version so it will not stop working due to version check.
+    </change-notes>
+
+
+
     <!-- Product and plugin compatibility requirements.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
     <depends>com.intellij.modules.platform</depends>

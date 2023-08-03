@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "se.illusionlabs"
-version = "1.0.2"
+version = "1.0.3"
 
 repositories {
     mavenCentral()
@@ -32,7 +32,7 @@ tasks {
 
     patchPluginXml {
         sinceBuild.set("221")
-        untilBuild.set("231.*")
+        untilBuild.set("")
     }
 
     signPlugin {
